@@ -1,7 +1,11 @@
+import { Container } from 'react-bootstrap';
+
 function App() {
   return (
-    <div className='App'>
-      <h1>Waiter App</h1>
+    <div>
+      <Container>
+        <h1 className='text-danger text-center'>Waiter App</h1>
+      </Container>
     </div>
   );
 }
