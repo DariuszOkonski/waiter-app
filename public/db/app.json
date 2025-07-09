@@ -41,7 +41,7 @@
       "bill": "0"
     }
   ],
-  "status": [
+  "statuses": [
     { "id": "b668ad46-536e-4d48-8118-0b88e2d23163", "name": "reserved" },
     { "id": "85b49e49-15f9-421e-9515-a4ce6078d291", "name": "free" },
     { "id": "ffe151e2-74f6-4f7c-bb70-4b91b193e05c", "name": "busy" },
