@@ -1,7 +1,54 @@
 {
   "tables": [
-    { "id": 1, "name": "Table 1" },
-    { "id": 2, "name": "Table 2" },
-    { "id": 3, "name": "Table 3" }
-  ]
+    {
+      "id": "a32c1c79-6967-40b4-bd08-26cf4ed586a5",
+      "name": "Table 1",
+      "status": "free",
+      "people": "0",
+      "maxPeople": "0",
+      "bill": "0"
+    },
+    {
+      "id": "bd99c443-d73c-4e99-8bf9-015e71034e53",
+      "name": "Table 2",
+      "status": "free",
+      "people": "0",
+      "maxPeople": "0",
+      "bill": "0"
+    },
+    {
+      "id": "4199d6e5-9bbc-481d-b2ae-303f001a7dbc",
+      "name": "Table 3",
+      "status": "free",
+      "people": "0",
+      "maxPeople": "0",
+      "bill": "0"
+    },
+    {
+      "id": "a70922b9-2e2d-4ad0-8358-2c269608b429",
+      "name": "Table 4",
+      "status": "free",
+      "people": "0",
+      "maxPeople": "0",
+      "bill": "0"
+    },
+    {
+      "id": "e9283399-ea9d-420d-9b20-03362488e00d",
+      "name": "Table 5",
+      "status": "free",
+      "people": "0",
+      "maxPeople": "0",
+      "bill": "0"
+    }
+  ],
+  "status": [
+    { "id": "b668ad46-536e-4d48-8118-0b88e2d23163", "name": "reserved" },
+    { "id": "85b49e49-15f9-421e-9515-a4ce6078d291", "name": "free" },
+    { "id": "ffe151e2-74f6-4f7c-bb70-4b91b193e05c", "name": "busy" },
+    { "id": "0d6b521e-fac9-4b2c-ace2-5bbf8b794f8e", "name": "cleaning" }
+  ],
+  "people": {
+    "min": 0,
+    "max": 10
+  }
 }
