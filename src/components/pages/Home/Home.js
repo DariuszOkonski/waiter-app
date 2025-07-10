@@ -1,4 +1,3 @@
-import React from 'react';
 import SimplifyTable from '../../views/SimplifyTable/SimplifyTable';
 
 function Home() {
