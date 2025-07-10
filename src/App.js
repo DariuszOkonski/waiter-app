@@ -7,8 +7,6 @@ import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
 
-// koło ratunkowe - stare projekty
-
 function App() {
   return (
     <div>
