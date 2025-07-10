@@ -10,15 +10,15 @@ import Header from './components/views/Header/Header';
 function App() {
   return (
     <div>
-      <Header />
       <Container>
+        <Header />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/table/:id' element={<Table />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
+        <Footer />
       </Container>
-      <Footer />
     </div>
   );
 }
