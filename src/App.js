@@ -1,10 +1,11 @@
-import { Container, Table } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import NotFound from './components/views/NotFound/NotFound';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import About from './components/views/About/About';
+import Table from './components/pages/Table/Table';
 
 // koło ratunkowe - stare projekty
 
