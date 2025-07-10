@@ -4,6 +4,7 @@ import Home from './components/pages/Home/Home';
 import NotFound from './components/views/NotFound/NotFound';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
+import About from './components/views/About/About';
 
 // koło ratunkowe - stare projekty
 
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/table/:id' element={<Table />} />
-          <Route path='/about' element={<h1>About</h1>} />
+          <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
         <Footer />
