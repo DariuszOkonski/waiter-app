@@ -2,11 +2,15 @@ import { Container, Table } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import NotFound from './components/views/NotFound/NotFound';
+import Footer from './components/views/Footer/Footer';
+import Header from './components/views/Header/Header';
+
+// koło ratunkowe - stare projekty
 
 function App() {
   return (
     <div>
-      <h1 className='text-danger bg-success text-center'>Waiter App</h1>
+      <Header />
       <Container>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -14,6 +18,7 @@ function App() {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Container>
+      <Footer />
     </div>
   );
 }
