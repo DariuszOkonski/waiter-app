@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home/Home';
 import Table from './components/pages/Table/Table';
@@ -6,21 +8,12 @@ import About from './components/views/About/About';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
-import { updateTables } from './redux/tablesRedux';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { fetchTables } from './redux/tablesRedux';
 
 function App() {
   const dispatch = useDispatch();
-  const fetchTables = () => {
-    fetch('http://localhost:3131/api/tables')
-      .then((res) => res.json())
-      .then((tables) => {
-        dispatch(updateTables(tables));
-      });
-  };
 
-  useEffect(fetchTables, [dispatch]);
+  useEffect(() => fetchTables(dispatch), [dispatch]);
 
   return (
     <div>
