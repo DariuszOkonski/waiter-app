@@ -10,6 +10,7 @@ import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
 import useSetAllData from './hooks/useSetAllData';
 import Loading from './components/common/Loading/Loading';
+import Error from './components/views/Error/Error';
 
 function App() {
   const { isLoading, error } = useSetAllData();
@@ -21,13 +22,16 @@ function App() {
       {isLoading && <Loading />}
       <Container>
         <Header />
-        {error && <p>Error</p>}
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/table/:id' element={<Table />} />
-          <Route path='/about' element={<About />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+        {error ? (
+          <Error message={error.message} />
+        ) : (
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/table/:id' element={<Table />} />
+            <Route path='/about' element={<About />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        )}
         <Footer />
       </Container>
     </div>

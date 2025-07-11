@@ -1,6 +1,6 @@
 export const fetchTables = async () => {
   try {
-    const res = await fetch('http://localhost:3131/api/tables');
+    const res = await fetch('http://localhost:3131/api/tables1');
 
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
