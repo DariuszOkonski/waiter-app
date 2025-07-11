@@ -6,8 +6,22 @@ import About from './components/views/About/About';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
+import { updateTables } from './redux/tablesRedux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 function App() {
+  const dispatch = useDispatch();
+  const fetchTables = () => {
+    fetch('http://localhost:3131/api/tables')
+      .then((res) => res.json())
+      .then((tables) => {
+        dispatch(updateTables(tables));
+      });
+  };
+
+  useEffect(fetchTables, [dispatch]);
+
   return (
     <div>
       <Container>
