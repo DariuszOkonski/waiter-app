@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -9,11 +9,15 @@ import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
 import { fetchTables } from './redux/tablesRedux';
+import { fetchStatuses } from './redux/statusesRedux';
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(fetchTables()), [dispatch]);
+  useEffect(() => {
+    dispatch(fetchTables());
+    dispatch(fetchStatuses());
+  }, [dispatch]);
 
   return (
     <div>
@@ -33,7 +37,7 @@ function App() {
 
 export default App;
 
-// TODO: to modify data on json-server
+// TODO: to modify data on json-server, 13:00
 // const options = {
 //   method: 'PUT',
 //   headers: {
