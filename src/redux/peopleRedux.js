@@ -1,5 +1,10 @@
 const peopleReducer = (startPart = {}, action) => {
-  return startPart;
+  switch (action.type) {
+    case UPDATE_PEOPLE:
+      return { ...action.payload };
+    default:
+      return startPart;
+  }
 };
 
 export default peopleReducer;
@@ -8,5 +13,8 @@ export default peopleReducer;
 export const getPeople = (state) => state.people;
 
 // actions
+const createActionName = (actionName) => `app/people/${actionName}`;
+const UPDATE_PEOPLE = createActionName('UPDATE_PEOPLE');
 
 // actions creators
+export const updatePeople = (payload) => ({ type: UPDATE_PEOPLE, payload });

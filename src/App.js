@@ -8,17 +8,20 @@ import About from './components/views/About/About';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
-import useGetAllData from './hooks/useGetAllData';
+import useSetAllData from './hooks/useSetAllData';
 import Loading from './components/common/Loading/Loading';
 
 function App() {
-  const { isLoading } = useGetAllData();
+  const { isLoading, error } = useSetAllData();
+
+  console.log(error);
 
   return (
     <div>
       {isLoading && <Loading />}
       <Container>
         <Header />
+        {error && <p>Error</p>}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/table/:id' element={<Table />} />
