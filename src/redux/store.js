@@ -7,8 +7,8 @@ import peopleReducer from './peopleRedux';
 
 const subReducers = {
   tables: tablesReducer,
-  // statuses: statusesReducer,
-  // people: peopleReducer,
+  statuses: statusesReducer,
+  people: peopleReducer,
 };
 
 const reducer = combineReducers(subReducers);

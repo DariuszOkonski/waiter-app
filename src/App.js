@@ -8,15 +8,15 @@ import About from './components/views/About/About';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
-import { fetchTables } from './redux/tablesRedux';
+import useGetAllData from './hooks/useGetAllData';
+import Loading from './components/common/Loading/Loading';
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => fetchTables(dispatch), [dispatch]);
+  const { isLoading } = useGetAllData();
 
   return (
     <div>
+      {isLoading && <Loading />}
       <Container>
         <Header />
         <Routes>
