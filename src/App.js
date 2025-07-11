@@ -10,13 +10,19 @@ import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
 import { fetchTables } from './redux/tablesRedux';
 import { fetchStatuses } from './redux/statusesRedux';
+import { fetchPeople } from './redux/peopleRedux';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTables());
-    dispatch(fetchStatuses());
+    const fetchData = async () => {
+      await dispatch(fetchTables());
+      await dispatch(fetchStatuses());
+      await dispatch(fetchPeople());
+    };
+
+    fetchData();
   }, [dispatch]);
 
   return (
