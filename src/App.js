@@ -8,18 +8,27 @@ import About from './components/views/About/About';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
+import Loading from './components/common/Loading/Loading';
 import { fetchTables } from './redux/tablesRedux';
 import { fetchStatuses } from './redux/statusesRedux';
 import { fetchPeople } from './redux/peopleRedux';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // setIsLoading(true);
     const fetchData = async () => {
-      await dispatch(fetchTables());
-      await dispatch(fetchStatuses());
-      await dispatch(fetchPeople());
+      try {
+        await dispatch(fetchTables());
+        await dispatch(fetchStatuses());
+        await dispatch(fetchPeople());
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchData();
@@ -27,6 +36,7 @@ function App() {
 
   return (
     <div>
+      {isLoading && <Loading />}
       <Container>
         <Header />
         <Routes>
