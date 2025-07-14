@@ -3,7 +3,7 @@
     {
       "id": "a32c1c79-6967-40b4-bd08-26cf4ed586a5",
       "name": "Table 1",
-      "status": "free",
+      "status": "reserved",
       "people": "0",
       "maxPeople": "0",
       "bill": "0"
@@ -42,10 +42,22 @@
     }
   ],
   "statuses": [
-    { "id": "b668ad46-536e-4d48-8118-0b88e2d23163", "name": "reserved" },
-    { "id": "85b49e49-15f9-421e-9515-a4ce6078d291", "name": "free" },
-    { "id": "ffe151e2-74f6-4f7c-bb70-4b91b193e05c", "name": "busy" },
-    { "id": "0d6b521e-fac9-4b2c-ace2-5bbf8b794f8e", "name": "cleaning" }
+    {
+      "id": "b668ad46-536e-4d48-8118-0b88e2d23163",
+      "name": "reserved"
+    },
+    {
+      "id": "85b49e49-15f9-421e-9515-a4ce6078d291",
+      "name": "free"
+    },
+    {
+      "id": "ffe151e2-74f6-4f7c-bb70-4b91b193e05c",
+      "name": "busy"
+    },
+    {
+      "id": "0d6b521e-fac9-4b2c-ace2-5bbf8b794f8e",
+      "name": "cleaning"
+    }
   ],
   "people": {
     "min": 0,
