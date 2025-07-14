@@ -1,6 +1,4 @@
-import React from 'react';
-import { Alert, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Alert } from 'react-bootstrap';
 
 function Error({ message }) {
   return (
@@ -11,9 +9,6 @@ function Error({ message }) {
           <p className='mb-3'>
             {message || 'Something went wrong. Please try again.'}
           </p>
-          <Button as={Link} to='/' variant='outline-danger'>
-            Go to Home
-          </Button>
         </Alert>
       </div>
     </div>

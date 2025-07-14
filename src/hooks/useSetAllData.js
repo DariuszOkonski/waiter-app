@@ -38,7 +38,7 @@ function useSetAllData() {
     }
   };
 
-  return { isLoading, error };
+  return [isLoading, error];
 }
 
 export default useSetAllData;

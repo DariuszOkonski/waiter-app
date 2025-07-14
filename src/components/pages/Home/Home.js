@@ -1,8 +1,8 @@
-import { useSelector } from 'react-redux';
-import SimplifyTable from '../../views/SimplifyTable/SimplifyTable';
-import { getAllTables } from '../../../redux/tablesRedux';
-import NoTables from '../../views/NoTables/NoTables';
 import React from 'react';
+import NoTables from '../../views/NoTables/NoTables';
+import SimplifyTable from '../../views/SimplifyTable/SimplifyTable';
+import { useSelector } from 'react-redux';
+import { getAllTables } from '../../../redux/tablesRedux';
 
 function Home() {
   const tables = useSelector(getAllTables);

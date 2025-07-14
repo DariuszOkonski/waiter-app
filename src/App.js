@@ -6,13 +6,20 @@ import About from './components/views/About/About';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
-function App() {
-  // const dispatch = useDispatch();
+import useSetAllData from './hooks/useSetAllData';
+import Loading from './components/common/Loading/Loading';
+import Error from './components/views/Error/Error';
 
-  // useEffect(() => fetchTables(dispatch), [dispatch]);
+function App() {
+  const [isLoading, error] = useSetAllData();
+
+  if (error) {
+    return <Error message={error.message} />;
+  }
 
   return (
     <div>
+      {isLoading && <Loading />}
       <Container>
         <Header />
         <Routes>
