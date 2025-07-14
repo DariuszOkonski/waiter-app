@@ -1,15 +1,16 @@
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getAllStatuses } from '../../../redux/statusesRedux';
-import { getSingleTable } from '../../../redux/tablesRedux';
+import {
+  getSingleTable,
+  updateSingleTableStore,
+} from '../../../redux/tablesRedux';
 import Error from '../../views/Error/Error';
-import Loading from '../../common/Loading/Loading';
-import useUpdateSingleTable from '../../../hooks/useUpdateSingleTable';
 
 function Table() {
   const { id } = useParams();
-  const [isLoading, error, updateSingleTable] = useUpdateSingleTable();
+  const dispatch = useDispatch();
 
   const table = useSelector((state) => getSingleTable(state, id));
   const statuses = useSelector(getAllStatuses);
@@ -22,12 +23,11 @@ function Table() {
 
   const handleStatus = async (e) => {
     const newTable = { ...table, status: e.target.value };
-    await updateSingleTable(newTable);
+    dispatch(updateSingleTableStore(newTable));
   };
 
   return (
     <div className='d-flex justify-content-center my-3'>
-      {isLoading && <Loading />}
       <div className='border rounded text-start p-4'>
         {' '}
         <h1 className='display-4 text-primary mb-4'>{table.name}</h1>
