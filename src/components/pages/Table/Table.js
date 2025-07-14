@@ -1,8 +1,12 @@
 import React from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function Table() {
+  const { id } = useParams();
+
+  console.log(id);
+
   return (
     <div className='d-flex justify-content-center my-3'>
       <div className='border rounded text-start p-4'>
