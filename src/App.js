@@ -1,36 +1,27 @@
-import { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
-import Loading from './components/common/Loading/Loading';
 import Home from './components/pages/Home/Home';
 import Table from './components/pages/Table/Table';
 import About from './components/views/About/About';
-import Error from './components/views/Error/Error';
 import Footer from './components/views/Footer/Footer';
 import Header from './components/views/Header/Header';
 import NotFound from './components/views/NotFound/NotFound';
-import { fetchTables } from './redux/tablesRedux';
-
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => fetchTables(dispatch), [dispatch]);
+  // useEffect(() => fetchTables(dispatch), [dispatch]);
 
   return (
     <div>
-      {isLoading && <Loading />}
       <Container>
         <Header />
-        {error ? (
-          <Error message={error.message} />
-        ) : (
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/table/:id' element={<Table />} />
-            <Route path='/about' element={<About />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
-        )}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/table/:id' element={<Table />} />
+          <Route path='/about' element={<About />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+
         <Footer />
       </Container>
     </div>
