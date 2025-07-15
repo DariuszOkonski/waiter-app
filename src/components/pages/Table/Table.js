@@ -72,7 +72,6 @@ function Table() {
   };
 
   const handleStatus = async (e) => {
-    console.log('e.target.value: ', e.target.value);
     const newTable = { ...localTable, status: e.target.value };
     if (e.target.value === 'cleaning' || e.target.value === 'free') {
       newTable.people = '0';
@@ -83,6 +82,10 @@ function Table() {
     // dispatch(updateSingleTableStore(newTable));
 
     setLocalTable(newTable);
+  };
+
+  const handleSubmit = async () => {
+    console.log('handleSubmit');
   };
 
   return (
@@ -98,7 +101,9 @@ function Table() {
           <InputGroup>
             <Form.Select value={localTable.status} onChange={handleStatus}>
               {statuses.map((status) => (
-                <option value={status.name}>{status.name}</option>
+                <option key={status.id} value={status.name}>
+                  {status.name}
+                </option>
               ))}
             </Form.Select>
           </InputGroup>
@@ -136,7 +141,7 @@ function Table() {
             </InputGroup>
           </div>
         )}
-        <Button as={Link} to='/' variant='primary'>
+        <Button onClick={handleSubmit} variant='primary'>
           Update
         </Button>
       </div>
