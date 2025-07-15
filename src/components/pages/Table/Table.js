@@ -51,6 +51,7 @@ function Table() {
   };
 
   const handleBill = (e) => {
+    setLocalTable({ ...localTable, bill: e.target.value });
     // dispatch(updateSingleTableStore({ ...table, bill: e.target.value }));
   };
 
@@ -70,9 +71,9 @@ function Table() {
     // if (e.target.value === 'cleaning' || e.target.value === 'free') {
     //   newTable.people = '0';
     // }
-    // if (e.target.value === 'busy') {
-    //   newTable.bill = '0';
-    // }
+    if (e.target.value === 'busy') {
+      newTable.bill = '0';
+    }
     // dispatch(updateSingleTableStore(newTable));
 
     setLocalTable(newTable);
