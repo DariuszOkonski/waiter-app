@@ -31,16 +31,21 @@ function Table() {
   }
 
   const handleMaxPeople = (e) => {
-    // const maxPeople = parseInt(e.target.value);
-    // let tablePeople = parseInt(table.people);
-    // if (maxPeople < people.min || maxPeople > people.max) {
-    //   return alert(
-    //     `Max People can not be less than ${people.min} and more than ${people.max}`
-    //   );
-    // }
-    // if (tablePeople > maxPeople) {
-    //   tablePeople = maxPeople;
-    // }
+    const maxPeople = parseInt(e.target.value);
+    let tablePeople = parseInt(localTable.people);
+    if (maxPeople < people.min || maxPeople > people.max) {
+      return alert(
+        `Max People can not be less than ${people.min} and more than ${people.max}`
+      );
+    }
+    if (tablePeople > maxPeople) {
+      tablePeople = maxPeople;
+    }
+    setLocalTable({
+      ...localTable,
+      people: tablePeople.toString(),
+      maxPeople: maxPeople.toString(),
+    });
     // dispatch(
     //   updateSingleTableStore({
     //     ...table,
@@ -56,12 +61,13 @@ function Table() {
   };
 
   const handleNumberOfPeople = (e) => {
-    // const numberOfPeople = parseInt(e.target.value);
-    // if (numberOfPeople < people.min || numberOfPeople > table.maxPeople) {
-    //   return alert(
-    //     `People can not be less than ${people.min} and more than ${table.maxPeople}`
-    //   );
-    // }
+    const numberOfPeople = parseInt(e.target.value);
+    if (numberOfPeople < people.min || numberOfPeople > localTable.maxPeople) {
+      return alert(
+        `People can not be less than ${people.min} and more than ${localTable.maxPeople}`
+      );
+    }
+    setLocalTable({ ...localTable, people: e.target.value });
     // dispatch(updateSingleTableStore({ ...table, people: e.target.value }));
   };
 
