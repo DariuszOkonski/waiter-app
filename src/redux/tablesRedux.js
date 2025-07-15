@@ -4,14 +4,16 @@ const tablesReducer = (startPart = [], action) => {
       return [...action.payload];
     }
     case UPDATE_SINGLE_TABLE: {
-      return startPart.map((table) =>
-        table.id !== action.payload.id
-          ? table
-          : {
-              ...table,
-              ...action.payload,
-            }
-      );
+      return [
+        ...startPart.map((table) =>
+          table.id !== action.payload.id
+            ? table
+            : {
+                ...table,
+                ...action.payload,
+              }
+        ),
+      ];
     }
     default:
       return startPart;
