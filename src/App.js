@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Loading from './components/common/Loading/Loading';
 import Home from './components/pages/Home/Home';
 import Table from './components/pages/Table/Table';
@@ -23,7 +23,8 @@ function App() {
       <Container>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Navigate to='/home' replace />} />
+          <Route path='/home' element={<Home />} />
           <Route path='/table/:id' element={<Table />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />

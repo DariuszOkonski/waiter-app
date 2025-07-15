@@ -1,6 +1,6 @@
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, Navigate } from 'react-router-dom';
 import { getAllStatuses } from '../../../redux/statusesRedux';
 import {
   getSingleTable,
@@ -18,63 +18,53 @@ function Table() {
   const people = useSelector(getPeople);
 
   if (!table) {
-    return (
-      <Error message={`Table with id:${id} does not exists`} isGoHomeVisible />
-    );
+    return <Navigate to='/' replace />;
   }
 
   const handleMaxPeople = (e) => {
-    const maxPeople = parseInt(e.target.value);
-    let tablePeople = parseInt(table.people);
-
-    if (maxPeople < people.min || maxPeople > people.max) {
-      return alert(
-        `Max People can not be less than ${people.min} and more than ${people.max}`
-      );
-    }
-
-    if (tablePeople > maxPeople) {
-      tablePeople = maxPeople;
-    }
-
-    dispatch(
-      updateSingleTableStore({
-        ...table,
-        people: tablePeople.toString(),
-        maxPeople: maxPeople.toString(),
-      })
-    );
+    // const maxPeople = parseInt(e.target.value);
+    // let tablePeople = parseInt(table.people);
+    // if (maxPeople < people.min || maxPeople > people.max) {
+    //   return alert(
+    //     `Max People can not be less than ${people.min} and more than ${people.max}`
+    //   );
+    // }
+    // if (tablePeople > maxPeople) {
+    //   tablePeople = maxPeople;
+    // }
+    // dispatch(
+    //   updateSingleTableStore({
+    //     ...table,
+    //     people: tablePeople.toString(),
+    //     maxPeople: maxPeople.toString(),
+    //   })
+    // );
   };
 
   const handleBill = (e) => {
-    dispatch(updateSingleTableStore({ ...table, bill: e.target.value }));
+    // dispatch(updateSingleTableStore({ ...table, bill: e.target.value }));
   };
 
   const handleNumberOfPeople = (e) => {
-    const numberOfPeople = parseInt(e.target.value);
-
-    if (numberOfPeople < people.min || numberOfPeople > table.maxPeople) {
-      return alert(
-        `People can not be less than ${people.min} and more than ${table.maxPeople}`
-      );
-    }
-
-    dispatch(updateSingleTableStore({ ...table, people: e.target.value }));
+    // const numberOfPeople = parseInt(e.target.value);
+    // if (numberOfPeople < people.min || numberOfPeople > table.maxPeople) {
+    //   return alert(
+    //     `People can not be less than ${people.min} and more than ${table.maxPeople}`
+    //   );
+    // }
+    // dispatch(updateSingleTableStore({ ...table, people: e.target.value }));
   };
 
   const handleStatus = async (e) => {
-    console.log('e.target.value: ', e.target.value);
-    const newTable = { ...table, status: e.target.value };
-
-    if (e.target.value === 'cleaning' || e.target.value === 'free') {
-      newTable.people = '0';
-    }
-
-    if (e.target.value === 'busy') {
-      newTable.bill = '0';
-    }
-
-    dispatch(updateSingleTableStore(newTable));
+    // console.log('e.target.value: ', e.target.value);
+    // const newTable = { ...table, status: e.target.value };
+    // if (e.target.value === 'cleaning' || e.target.value === 'free') {
+    //   newTable.people = '0';
+    // }
+    // if (e.target.value === 'busy') {
+    //   newTable.bill = '0';
+    // }
+    // dispatch(updateSingleTableStore(newTable));
   };
 
   return (
