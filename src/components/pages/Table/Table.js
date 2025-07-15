@@ -84,7 +84,8 @@ function Table() {
     setLocalTable(newTable);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     console.log('handleSubmit');
   };
 
@@ -93,57 +94,59 @@ function Table() {
       <div className='border rounded text-start p-4'>
         {' '}
         <h1 className='display-4 text-primary mb-4'>{table.name}</h1>
-        <div className='d-flex align-items-center mb-3'>
-          <InputGroup className='w-auto' style={{ minWidth: '15%' }}>
-            <Form.Label className='me-3 mb-0 fw-bold'>Status:</Form.Label>
-          </InputGroup>
-
-          <InputGroup>
-            <Form.Select value={localTable.status} onChange={handleStatus}>
-              {statuses.map((status) => (
-                <option key={status.id} value={status.name}>
-                  {status.name}
-                </option>
-              ))}
-            </Form.Select>
-          </InputGroup>
-        </div>
-        <div className='d-flex align-items-center mb-3'>
-          <InputGroup className='w-auto' style={{ minWidth: '15%' }}>
-            <Form.Label className='me-3 mb-0 fw-bold'>People:</Form.Label>
-          </InputGroup>
-          <InputGroup>
-            <Form.Control
-              type='number'
-              value={localTable.people}
-              onChange={handleNumberOfPeople}
-            />
-            <InputGroup.Text>/</InputGroup.Text>
-            <Form.Control
-              type='number'
-              value={localTable.maxPeople}
-              onChange={handleMaxPeople}
-            />
-          </InputGroup>
-        </div>
-        {localTable.status === 'busy' && (
+        <Form onSubmit={handleSubmit}>
           <div className='d-flex align-items-center mb-3'>
             <InputGroup className='w-auto' style={{ minWidth: '15%' }}>
-              <Form.Label className='me-3 mb-0 fw-bold'>Bill:</Form.Label>
+              <Form.Label className='me-3 mb-0 fw-bold'>Status:</Form.Label>
+            </InputGroup>
+
+            <InputGroup>
+              <Form.Select value={localTable.status} onChange={handleStatus}>
+                {statuses.map((status) => (
+                  <option key={status.id} value={status.name}>
+                    {status.name}
+                  </option>
+                ))}
+              </Form.Select>
+            </InputGroup>
+          </div>
+          <div className='d-flex align-items-center mb-3'>
+            <InputGroup className='w-auto' style={{ minWidth: '15%' }}>
+              <Form.Label className='me-3 mb-0 fw-bold'>People:</Form.Label>
             </InputGroup>
             <InputGroup>
               <Form.Control
                 type='number'
-                value={localTable.bill}
-                onChange={handleBill}
-                min={0}
+                value={localTable.people}
+                onChange={handleNumberOfPeople}
+              />
+              <InputGroup.Text>/</InputGroup.Text>
+              <Form.Control
+                type='number'
+                value={localTable.maxPeople}
+                onChange={handleMaxPeople}
               />
             </InputGroup>
           </div>
-        )}
-        <Button onClick={handleSubmit} variant='primary'>
-          Update
-        </Button>
+          {localTable.status === 'busy' && (
+            <div className='d-flex align-items-center mb-3'>
+              <InputGroup className='w-auto' style={{ minWidth: '15%' }}>
+                <Form.Label className='me-3 mb-0 fw-bold'>Bill:</Form.Label>
+              </InputGroup>
+              <InputGroup>
+                <Form.Control
+                  type='number'
+                  value={localTable.bill}
+                  onChange={handleBill}
+                  min={0}
+                />
+              </InputGroup>
+            </div>
+          )}
+          <Button type='submit' variant='primary'>
+            Update
+          </Button>
+        </Form>
       </div>
     </div>
   );
