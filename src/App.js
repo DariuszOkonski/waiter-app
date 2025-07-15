@@ -23,8 +23,8 @@ function App() {
       <Container>
         <Header />
         <Routes>
-          <Route path='/' element={<Navigate to='/home' replace />} />
-          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<h1>Main Page</h1>} />
+          <Route path='/tables' element={<Home />} />
           <Route path='/table/:id' element={<Table />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
