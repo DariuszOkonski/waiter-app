@@ -1,20 +1,17 @@
+import { useEffect, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams, Navigate } from 'react-router-dom';
-import { getAllStatuses } from '../../../redux/statusesRedux';
-import {
-  getSingleTable,
-  updateSingleTableStore,
-} from '../../../redux/tablesRedux';
-import Error from '../../views/Error/Error';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getPeople } from '../../../redux/peopleRedux';
-import { useEffect, useState } from 'react';
+import { getAllStatuses } from '../../../redux/statusesRedux';
+import { getSingleTable } from '../../../redux/tablesRedux';
 
 function Table() {
   const { id } = useParams();
   const [localTable, setLocalTable] = useState({});
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const table = useSelector((state) => getSingleTable(state, id));
   const statuses = useSelector(getAllStatuses);
@@ -87,6 +84,9 @@ function Table() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('handleSubmit');
+
+    // Redirect to /tables after form submission
+    navigate('/tables');
   };
 
   return (
