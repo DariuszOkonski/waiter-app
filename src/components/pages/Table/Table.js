@@ -11,7 +11,14 @@ import Error from '../../views/Error/Error';
 
 function Table() {
   const { id } = useParams();
-  const [localTable, setLocalTable] = useState({});
+  const [localTable, setLocalTable] = useState({
+    id: '',
+    name: '',
+    status: '',
+    people: '',
+    maxPeople: '',
+    bill: '',
+  });
   const navigate = useNavigate();
 
   const [isLoading, error, saveTableData] = useSaveTable();
