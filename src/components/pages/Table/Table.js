@@ -8,14 +8,23 @@ import {
 } from '../../../redux/tablesRedux';
 import Error from '../../views/Error/Error';
 import { getPeople } from '../../../redux/peopleRedux';
+import { useEffect, useState } from 'react';
 
 function Table() {
   const { id } = useParams();
+  const [localTable, setLocalTable] = useState({});
+
   const dispatch = useDispatch();
 
   const table = useSelector((state) => getSingleTable(state, id));
   const statuses = useSelector(getAllStatuses);
   const people = useSelector(getPeople);
+
+  useEffect(() => {
+    if (table) {
+      setLocalTable(table);
+    }
+  }, [table]);
 
   if (!table) {
     return <Navigate to='/' replace />;
@@ -56,8 +65,8 @@ function Table() {
   };
 
   const handleStatus = async (e) => {
-    // console.log('e.target.value: ', e.target.value);
-    // const newTable = { ...table, status: e.target.value };
+    console.log('e.target.value: ', e.target.value);
+    const newTable = { ...localTable, status: e.target.value };
     // if (e.target.value === 'cleaning' || e.target.value === 'free') {
     //   newTable.people = '0';
     // }
@@ -65,6 +74,8 @@ function Table() {
     //   newTable.bill = '0';
     // }
     // dispatch(updateSingleTableStore(newTable));
+
+    setLocalTable(newTable);
   };
 
   return (
@@ -78,7 +89,7 @@ function Table() {
           </InputGroup>
 
           <InputGroup>
-            <Form.Select value={table.status} onChange={handleStatus}>
+            <Form.Select value={localTable.status} onChange={handleStatus}>
               {statuses.map((status) => (
                 <option value={status.name}>{status.name}</option>
               ))}
@@ -92,18 +103,18 @@ function Table() {
           <InputGroup>
             <Form.Control
               type='number'
-              value={table.people}
+              value={localTable.people}
               onChange={handleNumberOfPeople}
             />
             <InputGroup.Text>/</InputGroup.Text>
             <Form.Control
               type='number'
-              value={table.maxPeople}
+              value={localTable.maxPeople}
               onChange={handleMaxPeople}
             />
           </InputGroup>
         </div>
-        {table.status === 'busy' && (
+        {localTable.status === 'busy' && (
           <div className='d-flex align-items-center mb-3'>
             <InputGroup className='w-auto' style={{ minWidth: '15%' }}>
               <Form.Label className='me-3 mb-0 fw-bold'>Bill:</Form.Label>
@@ -111,7 +122,7 @@ function Table() {
             <InputGroup>
               <Form.Control
                 type='number'
-                value={table.bill}
+                value={localTable.bill}
                 onChange={handleBill}
                 min={0}
               />
