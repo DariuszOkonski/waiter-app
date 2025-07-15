@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Loading from './components/common/Loading/Loading';
 import Home from './components/pages/Home/Home';
 import Table from './components/pages/Table/Table';
@@ -23,8 +23,7 @@ function App() {
       <Container>
         <Header />
         <Routes>
-          <Route path='/' element={<h1>Main Page</h1>} />
-          <Route path='/tables' element={<Home />} />
+          <Route path='/' element={<Home />} />
           <Route path='/table/:id' element={<Table />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
@@ -37,34 +36,3 @@ function App() {
 }
 
 export default App;
-
-// TODO: to modify data on json-server, 13:00
-// const options = {
-//   method: 'PUT',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     id: '1',
-//     status: 'busy',
-//     peopleAmount: 3,
-//     maxPeopleAmount: 4,
-//     bill: 45
-//   }),
-// };
-
-// fetch('http://localhost:3131/tables/1', options)
-
-// const options = {
-//   method: 'PATCH',
-
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-
-//   body: JSON.stringify({
-//     status: 'busy'
-//   })
-// };
-
-// fetch('http://localhost:3131/tables/1', options)

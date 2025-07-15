@@ -85,7 +85,7 @@ function Table() {
     e.preventDefault();
 
     await saveTableData(localTable);
-    navigate('/tables');
+    navigate('/');
   };
 
   if (error) {
