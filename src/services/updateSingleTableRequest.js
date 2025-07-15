@@ -21,20 +21,3 @@ export const updateSingleTableRequest = async (table) => {
     throw error;
   }
 };
-
-// TODO: to modify data on json-server, 13:00
-// const options = {
-//   method: 'PUT',
-//   headers: {
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({
-//     id: '1',
-//     status: 'busy',
-//     peopleAmount: 3,
-//     maxPeopleAmount: 4,
-//     bill: 45
-//   }),
-// };
-
-// fetch('http://localhost:3131/tables/1', options)
