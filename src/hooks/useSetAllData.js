@@ -22,13 +22,14 @@ function useSetAllData() {
     setError(null);
 
     try {
-      const tables = await fetchTables();
+      const [tables, statuses, people] = await Promise.all([
+        fetchTables(),
+        fetchStatuses(),
+        fetchPeople(),
+      ]);
+
       dispatch(updateTables(tables));
-
-      const statuses = await fetchStatuses();
       dispatch(updateStatuses(statuses));
-
-      const people = await fetchPeople();
       dispatch(updatePeople(people));
     } catch (error) {
       console.log('error: ', error);
