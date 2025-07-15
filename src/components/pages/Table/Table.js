@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getPeople } from '../../../redux/peopleRedux';
 import { getAllStatuses } from '../../../redux/statusesRedux';
 import { getSingleTable } from '../../../redux/tablesRedux';
+import useSaveTable from '../../../hooks/useSaveTable';
+import Loading from '../../common/Loading/Loading';
+import Error from '../../views/Error/Error';
 
 function Table() {
   const { id } = useParams();
   const [localTable, setLocalTable] = useState({});
   const navigate = useNavigate();
 
-  // const dispatch = useDispatch();
+  const [isLoading, error, saveTableData] = useSaveTable();
 
   const table = useSelector((state) => getSingleTable(state, id));
   const statuses = useSelector(getAllStatuses);
@@ -43,18 +46,10 @@ function Table() {
       people: tablePeople.toString(),
       maxPeople: maxPeople.toString(),
     });
-    // dispatch(
-    //   updateSingleTableStore({
-    //     ...table,
-    //     people: tablePeople.toString(),
-    //     maxPeople: maxPeople.toString(),
-    //   })
-    // );
   };
 
   const handleBill = (e) => {
     setLocalTable({ ...localTable, bill: e.target.value });
-    // dispatch(updateSingleTableStore({ ...table, bill: e.target.value }));
   };
 
   const handleNumberOfPeople = (e) => {
@@ -65,7 +60,6 @@ function Table() {
       );
     }
     setLocalTable({ ...localTable, people: e.target.value });
-    // dispatch(updateSingleTableStore({ ...table, people: e.target.value }));
   };
 
   const handleStatus = async (e) => {
@@ -76,21 +70,24 @@ function Table() {
     if (e.target.value === 'busy') {
       newTable.bill = '0';
     }
-    // dispatch(updateSingleTableStore(newTable));
 
     setLocalTable(newTable);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handleSubmit');
 
-    // Redirect to /tables after form submission
+    await saveTableData(localTable);
     navigate('/tables');
   };
 
+  if (error) {
+    return <Error message={error.message} />;
+  }
+
   return (
     <div className='d-flex justify-content-center my-3'>
+      {isLoading && <Loading />}
       <div className='border rounded text-start p-4'>
         {' '}
         <h1 className='display-4 text-primary mb-4'>{table.name}</h1>
